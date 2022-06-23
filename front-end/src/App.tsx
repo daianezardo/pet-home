@@ -1,6 +1,8 @@
+import { Routes } from "./Routes";
+
 function App() {
   return (
-   <p>Pet Home</p>
+   <Routes/>
   );
 }
 
