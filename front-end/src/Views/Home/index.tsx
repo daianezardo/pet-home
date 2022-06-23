@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import styled from 'styled-components';
 
 export function HomeView () {
     return (
@@ -7,5 +8,10 @@ export function HomeView () {
     </Container>
     )
 }
+
+const Title = styled.h1`
+    font-size: 3rem;
+`
+
 
 
