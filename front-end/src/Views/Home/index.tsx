@@ -1,4 +1,4 @@
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import styled from 'styled-components';
 import bgMobile from "../../assets/img/dog-shower-mobile.jpg";
 import bgDesktop from "../../assets/img/dog-shower.jpg";
