@@ -2,6 +2,7 @@ import { Button, Container } from "react-bootstrap";
 import styled from 'styled-components';
 import bgMobile from "../../assets/img/dog-shower-mobile.jpg";
 import bgDesktop from "../../assets/img/dog-shower.jpg";
+import { CustomButton } from "../../components/CustomButton";
 
 export function HomeView() {
   return (
@@ -10,8 +11,8 @@ export function HomeView() {
         <Title className="text-black text-center text-lg-start mt-auto mt-lg-0">
           Levamos a Pet Home até seu pet.
         </Title>
-        <Button variant="success" size='lg' className="mt-auto mt-lg-3 mb-2">Criar conta</Button>
-        <Button variant="success" size="lg" className="mb-4">Fazer login</Button>
+        <CustomButton variant="success" size='lg' className="mt-auto mt-lg-3 mb-2">Criar conta</CustomButton>
+        <CustomButton variant="success" size="lg" className="mb-4">Fazer login</CustomButton>
       </Container>
     </Banner>
   );
