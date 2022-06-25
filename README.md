@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://magnificent-axolotl-086603.netlify.app">
-    <img width="106" alt="logo-jn" src="https://user-images.githubusercontent.com/99056875/175178705-cc162173-901e-450e-9417-dda9ee9a0092.png">
+    <img width="106" alt="logo-jn" src="https://user-images.githubusercontent.com/99056875/175791756-06f651e0-0c6c-48ec-b8ba-07225e70d39d.png">
   </a>
   
 
