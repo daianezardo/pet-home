@@ -5,10 +5,13 @@ import Logo from "../../assets/img/logo-pet-home.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
+type Props = {
+    withoutMargin?: boolean
+  }
 
-export function Footer () {
+export function Footer ({ withoutMargin = false }: Props) {
     return (
-      <FooterStyled className="text-center">
+      <FooterStyled className={`text-center ${withoutMargin ? '' : 'mt-5'}`}>
         <Container className="d-lg-flex align-items-center">
           <Link to='/' className="me-lg-auto">
             <ImageStyled src={Logo} alt='Logo Pet Home' width={255} height={67} />

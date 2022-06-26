@@ -9,14 +9,14 @@ type Props = {
   }
 
 
-export const Layout: React.FC<Props> = ({ children, startTransparent }) => {
+export const Layout: React.FC<Props> = ({ children, startTransparent, withoutMargin }) => {
     return (
       <>
       <Header startTransparent={startTransparent}/>
       <MainStyled startTransparent={startTransparent}>
         {children}
         </MainStyled>
-        <Footer/>
+        <Footer withoutMargin={withoutMargin}/>
       </>
     )
   }
