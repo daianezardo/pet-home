@@ -13,8 +13,8 @@ export function HomeView() {
         <Title className="text-black text-center text-lg-start mt-auto mt-lg-0">
           Levamos a Pet Home até seu pet.
         </Title>
-        <CustomButton variant="success" size='lg' className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Criar conta</CustomButton>
-        <CustomButton variant="success" size="lg" className="mb-4" to='/login'>Fazer login</CustomButton>
+        <CustomButton size='lg' className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Criar conta</CustomButton>
+        <CustomButton size="lg" className="mb-4" to='/login'>Fazer login</CustomButton>
       </Container>
     </Banner>
     </Layout>
