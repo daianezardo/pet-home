@@ -14,6 +14,11 @@ export function RegisterView () {
                 controlId="userName"
                 label="Nome"
                 placeholder="Digite aqui seu nome"
+                error='Preencha o seu nome'
+                isInvalid
+                mask={[
+                  {mask: '000.000.000-00'}
+                ]}
               />
           </Col>
         </Row>
