@@ -11,15 +11,36 @@ export function RegisterView () {
           <Col lg={4}>
             <PageTitle>Nova conta</PageTitle>
               <FormField
-                controlId="userName"
+                controlId="imput-name"
                 label="Nome"
                 placeholder="Digite aqui seu nome"
-                error='Preencha o seu nome'
-                isInvalid
+              />
+              <FormField
+                controlId="imput-email"
+                label="E-mail"
+                placeholder="Digite aqui seu e-mail"
+              />
+              <FormField
+                controlId="imput-phone"
+                label="Telefone"
+                placeholder="(00) 00000-0000"
                 mask={[
-                  {mask: '000.000.000-00'}
+                  { mask: '(00) 0000-0000' },
+                  { mask: '(00) 00000-0000' },
                 ]}
               />
+              <FormField
+                controlId="imput-password"
+                label="Senha"
+                placeholder="Informe sua senha de acesso"
+                type="password"
+              />
+              <Form.Group className='mb-3' controlId="input-agree">
+                <Form.Check
+                  type="checkbox"
+                  label={<>Eu li e aceito os <a href='/termos-de-uso.pdf' target='_blank'>Termos de Uso</a>.</>}
+                />
+                </Form.Group>
           </Col>
         </Row>
       </Container>
