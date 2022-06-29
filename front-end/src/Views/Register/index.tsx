@@ -1,4 +1,6 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { CustomButton } from "../../components/CustomButton";
 import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
@@ -41,6 +43,12 @@ export function RegisterView () {
                   label={<>Eu li e aceito os <a href='/termos-de-uso.pdf' target='_blank'>Termos de Uso</a>.</>}
                 />
                 </Form.Group>
+                <div className="d-grid mb-4">
+                <CustomButton>
+                  Criar conta
+                </CustomButton>
+                </div>
+                <p className="text-center">Já possui conta?<br/><Link to='/login'>Entrar</Link></p>
           </Col>
         </Row>
       </Container>

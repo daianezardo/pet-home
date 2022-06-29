@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
   }
   a {
-    color: #00FFFF;
+    color: #1117A3;
     text-decoration: none;
   }
 `
