@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CustomButton } from "../../components/CustomButton";
@@ -6,12 +7,25 @@ import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
 
 export function RegisterView () {
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      agree: false
+    },
+    onSubmit: () => {
+
+    }
+  })
     return (
         <Layout>
       <Container>
         <Row className='justify-content-center'>
           <Col lg={4}>
             <PageTitle>Nova conta</PageTitle>
+            <Form onSubmit={formik.handleSubmit}>
               <FormField
                 controlId="imput-name"
                 label="Nome"
@@ -44,11 +58,12 @@ export function RegisterView () {
                 />
                 </Form.Group>
                 <div className="d-grid mb-4">
-                <CustomButton>
+                <CustomButton type="submit">
                   Criar conta
                 </CustomButton>
                 </div>
                 <p className="text-center">Já possui conta?<br/><Link to='/login'>Entrar</Link></p>
+                </Form>
           </Col>
         </Row>
       </Container>
