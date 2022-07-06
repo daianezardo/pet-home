@@ -96,6 +96,6 @@ const NavbarCollapseStyled = styled(Navbar.Collapse)`
 
 const NavLinkStyled = styled(Nav.Link)`
   @media (min-width: 992px) {
-    color: #FFF !important;
+    color: #070707 !important;
   }
 `
