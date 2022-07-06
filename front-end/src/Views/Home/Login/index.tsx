@@ -11,6 +11,8 @@ import { FormField } from "../../../components/FormField";
 import { Layout } from "../../../components/Layout";
 import { PageTitle } from "../../../components/PageTitle";
 import * as yup from 'yup';
+import { loginUser } from "../../../services/loginUser";
+import { updateUser } from "../../../store/slices/userSlice";
 
 type FormValues = {
     email: string
@@ -18,7 +20,7 @@ type FormValues = {
   }
 
 export function LoginView () {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
@@ -33,7 +35,16 @@ export function LoginView () {
         .required('Preencha a senha.')
     }),
     onSubmit: async (values) => {
-      
+      try {
+        const user = await loginUser(values)
+        dispatch(updateUser(user))
+        navigate('/novo-pedido')
+      } catch (error) {
+        const errorMsg = error instanceof FirebaseError && (error.code === AuthErrorCodes.INVALID_PASSWORD || error.code === AuthErrorCodes.USER_DELETED)
+          ? 'Login ou senha inválidos.'
+          : 'Falha ao fazer login. Tente novamente.'
+        toast.error(errorMsg)
+      }
     }
   })
   const getFieldProps = (fieldName: keyof FormValues) => {
