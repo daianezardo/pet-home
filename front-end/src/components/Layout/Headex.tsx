@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Container, Nav, Navbar } from "react-bootstrap"
 import Logo from "../../assets/img/logo-pet-home.png"
 import LogoWhite from "../../assets/img/logo-pet-home.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { CustomButton } from "../CustomButton"
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { deleteUser, selectIsUserLoggedIn } from "../../store/slices/userSlice"
+import { logoutUser } from "../../services/logoutUser"
 
 type Props = {
     startTransparent?: boolean
@@ -26,7 +29,14 @@ export function Header ({ startTransparent = false }: Props) {
       window.removeEventListener('scroll', scrollChange)
     }
   }, [isTransparent, startTransparent])
-  
+  const isUserLoggedIn = useSelector(selectIsUserLoggedIn)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleLogout = async () => {
+    await logoutUser()
+    dispatch(deleteUser())
+    navigate('/login')
+  }
     return (
         <NavbarStyled fixed='top' expand="lg" bg={isTransparent ? undefined : 'white'}>
       <Container>
@@ -39,10 +49,18 @@ export function Header ({ startTransparent = false }: Props) {
         <NavbarCollapseStyled id="basic-navbar-nav" className="justify-content-center text-center">
           <Nav className="ms-auto">
             <NavLinkStyled forwardedAs={Link} to='/'>Início</NavLinkStyled>
+            {isUserLoggedIn ? (
+              <>
+                <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/novo-pedido'>Novo pedido</CustomButton>
+                <CustomButton className="mt-2 mt-lg-0 ms-lg-4" onClick={handleLogout}>Sair</CustomButton>
+                </>
+            ) : (
               <>
                 <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/cadastro'>Criar conta</CustomButton>
                 <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/login'>Fazer login</CustomButton>
               </>
+            )}
+              
           </Nav>
         </NavbarCollapseStyled>
       </Container>

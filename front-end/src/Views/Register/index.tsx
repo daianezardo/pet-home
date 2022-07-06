@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { CustomButton } from "../../components/CustomButton";
 import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
@@ -10,6 +10,8 @@ import { createUser } from "../../services/CreateUser";
 import { toast } from "react-toastify";
 import { FirebaseError } from "firebase/app";
 import { AuthErrorCodes } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../store/slices/userSlice";
 
 type FormValues = {
   name: string
@@ -21,6 +23,8 @@ type FormValues = {
 
 
 export function RegisterView () {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const formik = useFormik<FormValues>({
     initialValues: {
       name: '',
@@ -50,6 +54,8 @@ export function RegisterView () {
     onSubmit: async (values, { setFieldError }) => {
       try {
         const user = await createUser(values)
+        dispatch(updateUser(user))
+        navigate('/novo-pedido')
       } catch(error) {
         if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS) {
           setFieldError('email', 'Este e-mail já está em uso.')
@@ -115,7 +121,10 @@ export function RegisterView () {
                 )}
                 </Form.Group>
                 <div className="d-grid mb-4">
-                <CustomButton type='submit'>
+                <CustomButton type='submit'
+                loading={formik.isValidating || formik.isSubmitting}
+                disabled={formik.isValidating || formik.isSubmitting}
+                >
                   Criar conta
                 </CustomButton>
                 </div>

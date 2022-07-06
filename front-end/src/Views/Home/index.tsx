@@ -1,11 +1,14 @@
 import { Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import bgMobile from "../../assets/img/dog-shower-mobile.jpg";
 import bgDesktop from "../../assets/img/dog-shower.jpg";
 import { CustomButton } from "../../components/CustomButton";
 import { Layout } from "../../components/Layout";
+import { selectIsLoadingUser } from "../../store/slices/userSlice";
 
 export function HomeView() {
+  const isUserLoggedIn = useSelector(selectIsLoadingUser)
   return (
     <Layout startTransparent withoutMargin>
     <Banner className="vh-100">
@@ -13,8 +16,15 @@ export function HomeView() {
         <Title className="text-black text-center text-lg-start mt-auto mt-lg-0">
           Levamos a Pet Home até seu pet.
         </Title>
-        <CustomButton size='lg' className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Criar conta</CustomButton>
-        <CustomButton size="lg" className="mb-4" to='/login'>Fazer login</CustomButton>
+        {isUserLoggedIn ? (
+          <CustomButton size='lg' className="mt-auto mt-lg-3 mb-2" to='/novo-pedido'>Criar pedido</CustomButton>
+        ) : (
+          <>
+          <CustomButton size='lg' className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Criar conta</CustomButton>
+          <CustomButton size="lg" className="mb-4" to='/login'>Fazer login</CustomButton>
+          </>
+        )}
+        
       </Container>
     </Banner>
     </Layout>
