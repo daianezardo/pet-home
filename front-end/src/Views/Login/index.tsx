@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { CustomButton } from "../../../components/CustomButton";
-import { FormField } from "../../../components/FormField";
-import { Layout } from "../../../components/Layout";
-import { PageTitle } from "../../../components/PageTitle";
+import { CustomButton } from "../../components/CustomButton";
+import { FormField } from "../../components/FormField";
+import { Layout } from "../../components/Layout";
+import { PageTitle } from "../../components/PageTitle";
 import * as yup from 'yup';
-import { loginUser } from "../../../services/loginUser";
-import { updateUser } from "../../../store/slices/userSlice";
+import { loginUser } from "../../services/loginUser";
+import { updateUser } from "../../store/slices/userSlice";
 
 type FormValues = {
     email: string
@@ -57,7 +57,7 @@ export function LoginView () {
     }
   }
     return (
-        <Layout>
+      <Layout>
       <Container>
         <Row className="justify-content-center">
           <Col lg={4}>

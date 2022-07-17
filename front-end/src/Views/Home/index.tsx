@@ -5,10 +5,10 @@ import bgMobile from "../../assets/img/dog-shower-mobile.jpg";
 import bgDesktop from "../../assets/img/dog-shower.jpg";
 import { CustomButton } from "../../components/CustomButton";
 import { Layout } from "../../components/Layout";
-import { selectIsLoadingUser } from "../../store/slices/userSlice";
+import { selectIsUserLoggedIn } from "../../store/slices/userSlice";
 
 export function HomeView() {
-  const isUserLoggedIn = useSelector(selectIsLoadingUser)
+  const isUserLoggedIn = useSelector(selectIsUserLoggedIn)
   return (
     <Layout startTransparent withoutMargin>
     <Banner className="vh-100">
@@ -54,5 +54,3 @@ const Title = styled.h1`
     max-width: 500px;
   }
 `
-
-
